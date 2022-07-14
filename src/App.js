@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-
+import React, { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import { moviesData } from './Components/MoviesData';
-import FilterMovie from './Components/FilterMovie/FilterMovie';
-import MoviesList from './Components/MoviesList';
-import AddMovie from './Components/AddMovie/AddMovie';
 
-import './App.css';
+import MoviesList from "./Components/MoviesList";
+import About from "./Components/About";
+import Error from "./Components/Error/Error";
+import FilterMovie from './Components/FilterMovie/FilterMovie';
+import AddMovie from './Components/AddMovie/AddMovie';
+import "./App.css";
 
 function App() {
   const [moviesList, setMoviesList] = useState(moviesData);
@@ -19,21 +21,28 @@ function App() {
 
   return (
     <div className="App">
-      <FilterMovie
+         <FilterMovie
         setNameSearch={setNameSearch}
         ratingSearch={ratingSearch}
         setRatingSearch={setRatingSearch} />
       
        <div style={{ display: 'flex', justifyContent: 'center' }}>
         <AddMovie addNewMovie={addNewMovie} />
-   
-</div>
-      <MoviesList
-        moviesList={moviesList}
-        nameSearch={nameSearch}
-        ratingSearch={ratingSearch} />    
-    </div>
+        </div>
+        
+      <Routes>  
+        <Route index element={<MoviesList
+          moviesList={moviesList}
+          nameSearch={nameSearch}
+          ratingSearch={ratingSearch} 
+        />} />     
+
+        <Route path="/about/:id" element={<About/>} />
+
+        <Route path="/*" element={<Error />} />
+      </Routes>
     
+    </div>
   );
 }
 

@@ -1,29 +1,30 @@
-import React from 'react';
+import React from "react";
 
-import MovieCard from './MovieCard/MovieCard';
+import { moviesData } from "./MoviesData";
+import MovieCard from "./MovieCard/MovieCard";
 
-const MoviesList = ({ moviesList, nameSearch, ratingSearch }) => {
+const Products = ({ moviesList, nameSearch, ratingSearch }) => {
   return (
-    <div
-      className="movies-list"
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        flexWrap: 'wrap',
-      }}
-    >
-      {moviesList
-        .filter(
+    <div   className="movies-list"
+    style={{
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
+      flexWrap: 'wrap',
+    }} >
+     
+        {moviesData.filter(
           (el) =>
             el.name.toLowerCase().includes(nameSearch.toLowerCase().trim()) &&
             el.rating >= ratingSearch
         )
-        .map((el, i) => (
-          <MovieCard key={i} movie={el} />
+        
+        .map((product) => (
+          <MovieCard key={product.id} product={product} />
         ))}
+
     </div>
   );
 };
 
-export default MoviesList;
+export default Products;

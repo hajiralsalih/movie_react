@@ -9,12 +9,9 @@ Modal.setAppElement('#root');
 
 const AddMovie = ({ addNewMovie }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [name, setName] = useState('');
-//  
+  const [name, setName] = useState(''); 
   const [rating, setRating] = useState('');
-  const [image, setImage] = useState('');
-//  
-  // 
+  const [image, setImage] = useState(''); 
 
   const openModal = () => {
     setIsOpen(true);
@@ -27,20 +24,15 @@ const AddMovie = ({ addNewMovie }) => {
   const handleSubmit = (e) => {
     let newMovie = {
       name,
-      // 
       rating,
       image,
-      // 
-  //  
     };
     addNewMovie(e, newMovie);
     setIsOpen(false);
     setName('');
-  // 
     setRating('');
     setImage('');
-  //  
-  // 
+
   };
 
   return (
@@ -54,12 +46,8 @@ const AddMovie = ({ addNewMovie }) => {
           <h1 className="addMovie-h1">Add New Movie ...</h1>
           <form>
             <label>Movie Name</label>
-            <input
-              type="text"
-              name="name"
-              value={name}
-              required
-              onChange={(e) => setName(e.target.value)}
+            <input type="text" name="name" value={name} required
+                 onChange={(e) => setName(e.target.value)}
             />
             <label>Movie Rate</label>
             <div className="rating-search">
